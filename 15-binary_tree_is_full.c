@@ -13,16 +13,18 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	if ((tree->left && !(tree->right)) || (!(tree->left) && tree->right))
-		return (0);
+	else
+	{
+		if (tree->left && tree->right)
+		{
+			l_value = binary_tree_is_full(tree->left);
+			r_value = binary_tree_is_full(tree->right);
 
-	/* If there are both left and right node and no sub child */
-	if ((!(tree->left->left) || !(tree->left->right)) &&
-		(!(tree->right->left) || !(tree->right->right)))
-		return (1);
+			return ((l_value < r_value) ? l_value : r_value);
+		}
+		else if (!(tree->left) && !(tree->right))
+			return (1);
+	}
 
-	l_value = binary_tree_is_full(tree->left);
-	r_value = binary_tree_is_full(tree->right);
-
-	return ((l_value < r_value) ? l_value : r_value);
+	return (0);
 }
