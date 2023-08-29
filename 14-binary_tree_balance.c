@@ -4,7 +4,7 @@
  * bt_height - a function to find a height of a binary tree;
  * @tree: a tree where to find a height;
  *
- * Return; a height of a binary tree.
+ * Return: a height of a binary tree.
  */
 size_t bt_height(const binary_tree_t *tree)
 {
